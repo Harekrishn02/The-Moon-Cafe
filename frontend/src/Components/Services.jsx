@@ -45,13 +45,12 @@ function Services() {
   }, []);
 
   return (
-    <section id="services" className="w-full bg-[#f8f5f0] py-16 sm:py-28"
-    data-aos="zoom-in-down">
+    <section id="services" className="w-full bg-[#f8f5f0] py-16 sm:py-28">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* ✅ Heading Section */}
         <div
           className="text-center mb-12 max-w-2xl mx-auto"
-          // data-aos="fade-down"
+          data-aos="fade-down"
         >
           <p className="font-pacifico text-lg italic text-[#523625] sm:text-lg md:text-2xl tracking-wide">
             --- Our Services ---

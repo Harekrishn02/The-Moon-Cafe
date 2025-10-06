@@ -5,9 +5,6 @@ import { IoClose, IoChevronBack, IoChevronForward } from "react-icons/io5";
 import axios from "axios";
 import API_BASE from "../config";
 
-import AOS from "aos";
-import "aos/dist/aos.css";
-
 export default function Gallery() {
   const [images, setImages] = useState([]); // backend images
   const [visibleCount, setVisibleCount] = useState(6);
@@ -84,13 +81,8 @@ export default function Gallery() {
     }, 1000);
   };
 
-    useEffect(() => {
-      AOS.init({ duration: 1000, once: true });
-    }, []);
-
   return (
-    <div className="relative w-full min-h-screen bg-[#f8f5f0] overflow-hidden"
-    >
+    <div className="relative w-full min-h-screen bg-[#f8f5f0] overflow-hidden">
       {/* Animations */}
       <style>
         {`
@@ -110,7 +102,7 @@ export default function Gallery() {
       </style>
 
       {/* Hero Section */}
-      <div className="relative bg-[url(G3.jpg)] w-full h-[250px] md:h-[400px] bg-cover bg-center flex items-center justify-center">
+      <div className="relative bg-[url(services-bg.webp)] w-full h-[250px] md:h-[400px] bg-cover bg-center flex items-center justify-center">
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="font-nunito text-3xl md:text-4xl font-bold">
@@ -130,7 +122,7 @@ export default function Gallery() {
         <p className="font-pacifico text-lg italic text-[#523625] sm:text-lg md:text-2xl tracking-wide">
           --- Royal Memories---{" "}
         </p>
-        <h1 className="font-nunito sm:text-4xl md:text-3xl m-4 font-extrabold text-[#66422b] mt-3 leading-snug">
+        <h1 className="font-nunito sm:text-4xl md:text-3xl font-extrabold text-[#66422b] mt-3 leading-snug">
           A LUXURY <span className="text-[#957d49]">VISUAL EXPERIENCE</span>
         </h1>
 
@@ -141,7 +133,6 @@ export default function Gallery() {
               key={img._id || img.filename}
               className="relative overflow-hidden rounded-sm shadow-lg cursor-pointer group break-inside-avoid animate-fadeInUp"
               onClick={() => openLightbox(idx)}
-              data-aos="zoom-in"
             >
               <img
                 src={`${API_BASE}/uploads/gallery/${img.filename}`}

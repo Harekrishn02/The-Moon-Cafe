@@ -1,12 +1,6 @@
-// src/api.js (or src/config.js)
+// src/config.js
+const API_BASE = (import.meta.env.VITE_API_BASE || "https://the-moon-cafe-an6r.onrender.com").replace(/\/+$/, ""); // remove trailing slash
 
-// Use env variable if available, otherwise fallback to Render backend.
-// Ensure no trailing slash at the end of the URL.
-const API_BASE = (
-  import.meta.env.VITE_API_URL || "https://the-moon-cafe.onrender.com"
-).replace(/\/+$/, "");
-
-console.log("✅ API Base URL:", API_BASE);
-console.log("Henil");
+console.log("Welcome To The Moon Cafe:", API_BASE);
 
 export default API_BASE;

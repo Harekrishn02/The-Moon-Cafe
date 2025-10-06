@@ -151,8 +151,7 @@ function Navbar() {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="md:hidden bg-[#352f27]/95 text-center backdrop-blur-md shadow-lg px-6 py-6 space-y-6 animate-fadeInDown"
-        >
+        <div className="md:hidden bg-[#352f27]/95 text-center backdrop-blur-md shadow-lg px-6 py-6 space-y-6 animate-fadeInDown">
           {[
             { to: "/", label: "Home" },
             { to: "/menu", label: "Menu" },
