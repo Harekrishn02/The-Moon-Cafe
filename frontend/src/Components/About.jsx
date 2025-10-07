@@ -1,90 +1,92 @@
-import React , { useEffect }from "react";
+import React, { useEffect } from "react";
 import CountUp from "react-countup"; // npm install react-countup
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 function About() {
-   useEffect(() => {
-      AOS.init({ duration: 1000, once: true });
-    }, []);
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, []);
   return (
     <>
       {/* Desktop/Tablet Layout (unchanged) */}
       <section className="hidden md:flex md:py-1 bg-[#f8f5f0] 2xl:py-26 xl:py-10 relative py-16 lg:py-2 overflow-hidden flex-row items-center">
         {/* Image Section */}
-        <div className="absolute ">
-          {/* <img
+        <div>
+          <div className="absolute ">
+            {/* <img
             src="/aboutimage.png"
             alt="Cafe Interior"
             className="w-200 lg:w-160 2xl:w-186 md:w-130 md:object-cover relative right-44 lg:right-44 top-20 lg:top-20 object-cover"
-          />  */}
-          <img
-            data-aos="fade-up-right"
-            src="/about1.png"
-            alt="Cafe Interior"
-            className="absolute top-26.5 right-51 w-190 h-190 lg:w-175 lg:h-155 md:w-195 md:h-130 md:top-23.5 md:right-49 rounded-full 2xl:w-180 2xl:h-180 lg:object-cover md:object-cover"
-          />
-        </div>
-
-        {/* Content Section */}
-        <div className="relative z-10 text-left text-[#3d2f23] p-10 px-24 lg:px-20 2xl:px-60 md:px-10 md:ml-96 ml-150 lg:ml-115">
-          <p className="font-pacifico text-lg italic text-[#523625] sm:text-lg md:text-2xl tracking-wide">
-            --- About Us ---
-          </p>
-          <p className="font-nunito text-1xl lg:text-3xl mt-3 font-bold text-[#352f27] mb-6 leading-snug animate-slideInLeft">
-            Welcome to <span className="text-[#d7bd6a]">The Moon Cafe</span>,
-            <br />
-            where every cup tells a story
-          </p>
-
-          <p className="mb-6 text-gray-700 md:mb-2 lg:text-[13px] xl:mb-4 xl:text-[15px] md:text-[10px]">
-            Discover a unique blend of flavors and ambiance at The Moon Cafe.
-            Inspired by the rich traditions of Turkey, we bring you a taste of
-            authentic Turkish culture in the heart of Surat.
-          </p>
-          <p className="mb-6 md:mb-5 xl:mb-10 lg:mb-10 text-gray-700 xl:text-[15px] lg:text-[13px] md:text-[10px]">
-            At The Moon Cafe, every dish tells a story, crafted with care and
-            passion. From aromatic coffees to delectable delicacies, our menu is
-            a celebration of culinary artistry and heartfelt hospitality.
-            Whether you're here for a relaxing coffee break or a delightful
-            dining experience, The Moon Cafe promises moments to savor, connect,
-            and cherish. Come, be a part of our journey!
-          </p>
-
-          {/* Experience */}
-          <div className="flex xl:mb-10 items-center gap-3 mb-8 md:mb-5">
-            <span className="w-2 h-15 md:w-1 md:h-8 lg:w-1.5 lg:h-10 bg-[#3d2f23]"></span>
-            <div>
-              <h1 className="text-[#3d2f23] lg:text-4xl md:text-3xl font-bold">
-                <CountUp start={0} end={8} duration={7} />
-              </h1>
-            </div>
-            <div>
-              <p className="text-gray-800 text-[16px] md:text-[10px] lg:text-[12px] font-semibold">
-                Years of{" "}
-              </p>
-              <h6 className="font-extrabold md:text-[15px] lg:text-[20px] text-[#d7bd6a]">
-                EXPERIENCE
-              </h6>
-            </div>
+            />  */}
+            <img
+              data-aos="fade-up-right"
+              src="/about1.png"
+              alt="Cafe Interior"
+              className="absolute top-26.5 right-51 w-190 h-190 lg:w-175 lg:h-155 md:w-195 md:h-130 md:top-23.5 md:right-49 rounded-full 2xl:w-180 2xl:h-180 lg:object-cover md:object-cover"
+            />
           </div>
 
-          {/* Contact Button */}
-         
-          <Link
-            to="/contact"
-             className="px-6 py-3 bg-gradient-to-r from-[#66422b] to-[#3e2a20] text-white rounded-full font-bold shadow-md hover:scale-105 hover:shadow-xl transition-transform duration-300"
-        >
-            CONTACT US
-          </Link>
+          {/* Content Section */}
+          <div className="relative z-10 text-left text-[#3d2f23] p-10 px-24 lg:px-20 2xl:px-60 md:px-10 md:ml-96 ml-150 lg:ml-115">
+            <p className="font-pacifico text-lg italic text-[#523625] sm:text-lg md:text-2xl tracking-wide">
+              --- About Us ---
+            </p>
+            <p className="font-nunito text-1xl lg:text-3xl mt-3 font-bold text-[#352f27] mb-6 leading-snug animate-slideInLeft">
+              Welcome to <span className="text-[#d7bd6a]">The Moon Cafe</span>,
+              <br />
+              where every cup tells a story
+            </p>
+
+            <p className="mb-6 text-gray-700 md:mb-2 lg:text-[13px] xl:mb-4 xl:text-[15px] md:text-[10px]">
+              Discover a unique blend of flavors and ambiance at The Moon Cafe.
+              Inspired by the rich traditions of Turkey, we bring you a taste of
+              authentic Turkish culture in the heart of Surat.
+            </p>
+            <p className="mb-6 md:mb-5 xl:mb-10 lg:mb-10 text-gray-700 xl:text-[15px] lg:text-[13px] md:text-[10px]">
+              At The Moon Cafe, every dish tells a story, crafted with care and
+              passion. From aromatic coffees to delectable delicacies, our menu
+              is a celebration of culinary artistry and heartfelt hospitality.
+              Whether you're here for a relaxing coffee break or a delightful
+              dining experience, The Moon Cafe promises moments to savor,
+              connect, and cherish. Come, be a part of our journey!
+            </p>
+
+            {/* Experience */}
+            <div className="flex xl:mb-10 items-center gap-3 mb-8 md:mb-5">
+              <span className="w-2 h-15 md:w-1 md:h-8 lg:w-1.5 lg:h-10 bg-[#3d2f23]"></span>
+              <div>
+                <h1 className="text-[#3d2f23] lg:text-4xl md:text-3xl font-bold">
+                  <CountUp start={0} end={8} duration={7} />
+                </h1>
+              </div>
+              <div>
+                <p className="text-gray-800 text-[16px] md:text-[10px] lg:text-[12px] font-semibold">
+                  Years of{" "}
+                </p>
+                <h6 className="font-extrabold md:text-[15px] lg:text-[20px] text-[#d7bd6a]">
+                  EXPERIENCE
+                </h6>
+              </div>
+            </div>
+
+            {/* Contact Button */}
+
+            <Link
+              to="/contact"
+              className="px-6 py-3 bg-gradient-to-r from-[#66422b] to-[#3e2a20] text-white rounded-full font-bold shadow-md hover:scale-105 hover:shadow-xl transition-transform duration-300"
+            >
+              CONTACT US
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Mobile (sm) Layout */}
       <section className="block md:hidden bg-[#f8f5f0] py-12 text-center px-6 relative">
         {/* Circle Image with Decorative Border */}
-        
+
         <p className="text-[#523625] italic text-[24px] font-pacifico mb-4 animate-fadeInUp">
           --- About Us ---
         </p>
