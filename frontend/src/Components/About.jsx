@@ -19,12 +19,12 @@ function About() {
             alt="Cafe Interior"
             className="w-200 lg:w-160 2xl:w-186 md:w-130 md:object-cover relative right-44 lg:right-44 top-20 lg:top-20 object-cover"
           />  */}
-          {/* <img
+          <img
             data-aos="fade-up-right"
             src="/about1.png"
             alt="Cafe Interior"
             className="absolute top-26.5 right-51 w-190 h-190 lg:w-175 lg:h-155 md:w-195 md:h-130 md:top-23.5 md:right-49 rounded-full 2xl:w-180 2xl:h-180 lg:object-cover md:object-cover"
-          /> */}
+          />
         </div>
 
         {/* Content Section */}
