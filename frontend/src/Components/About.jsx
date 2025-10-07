@@ -13,7 +13,7 @@ function About() {
       {/* Desktop/Tablet Layout (unchanged) */}
       <section className="hidden md:flex md:py-1 bg-[#f8f5f0] 2xl:py-26 xl:py-10 relative py-16 lg:py-2 overflow-hidden flex-row items-center">
         {/* Image Section */}
-        <div>
+        <div className="object-cover">
           <div className="absolute overflow-hidden">
             <img
               src="/aboutimage.png"
