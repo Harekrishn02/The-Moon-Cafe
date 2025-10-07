@@ -14,11 +14,11 @@ function About() {
       <section className="hidden md:flex md:py-1 bg-[#f8f5f0] 2xl:py-26 xl:py-10 relative py-16 lg:py-2 overflow-hidden flex-row items-center">
         {/* Image Section */}
         <div className="absolute overflow-hidden">
-          <img
+          {/* <img
             src="/aboutimage.png"
             alt="Cafe Interior"
             className="w-200 lg:w-160 2xl:w-186 md:w-130 md:object-cover relative right-44 lg:right-44 top-20 lg:top-20 object-cover"
-          /> 
+          />  */}
           {/* <img
             data-aos="fade-up-right"
             src="/about1.png"
