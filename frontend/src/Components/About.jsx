@@ -93,7 +93,7 @@ function About() {
         <div className="flex justify-center mb-8 relative">
           {/* Main Image */}
           <img
-            src="/about1.avif"
+            src="/about1.png"
             alt="Cafe Interior"
             className="w-100 h-100 rounded-3xl object-cover shadow-lg relative z-10"
           />
