@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  FaPhone,
+  FaPhoneAlt,
   FaInstagramSquare,
   FaFacebookSquare,
   FaMapMarkedAlt,
@@ -70,7 +70,8 @@ const Footer = () => {
           </h2>
           <ul className="space-y-3 font-medium">
             <li className="flex items-center justify-center md:justify-start gap-3 hover:text-[#f5d48d] transition">
-              <FaPhone /> +91 98765 43210
+              <FaPhoneAlt />
+              +91 98765 43210
             </li>
             <li className="flex items-center justify-center md:justify-start gap-3 hover:text-[#f5d48d] transition">
               <IoMail /> moon@gmail.com
