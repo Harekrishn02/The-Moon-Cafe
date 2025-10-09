@@ -1,3 +1,6 @@
+// src/Components/ContactList.jsx
+import { useState } from "react";
+
 export default function ContactList({ contacts, handleDelete }) {
   const [selectedContact, setSelectedContact] = useState(null);
 
