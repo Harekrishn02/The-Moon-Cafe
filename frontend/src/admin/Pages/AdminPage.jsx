@@ -1,3 +1,4 @@
+// src/pages/AdminPage.jsx
 import { useState, useEffect } from "react";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 
@@ -7,7 +8,6 @@ import GalleryManager from "../Components/GalleryManager";
 import ChangePasswordForm from "../Components/ChangePasswordForm";
 import ContactList from "../Components/ContactList";
 
-
 export default function AdminPage() {
   const [selectedFunction, setSelectedFunction] = useState("dashboard");
   const [message, setMessage] = useState("");
@@ -15,50 +15,49 @@ export default function AdminPage() {
   const [galleryCount, setGalleryCount] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Fetch admin message
+  // 🧩 Fetch admin info
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) return (window.location.href = "/admin/login");
 
     axiosInstance
-      .get("/api/admin")
+      .get("/admin")
       .then((res) => setMessage(res.data.message))
       .catch(() => (window.location.href = "/admin/login"));
   }, []);
 
-  // Fetch contacts
+  // 📨 Fetch contacts
   useEffect(() => {
     if (selectedFunction === "contacts" || selectedFunction === "dashboard") {
       axiosInstance
-        .get("/api/contact")
+        .get("/contact")
         .then((res) => setContacts(Array.isArray(res.data) ? res.data : []))
         .catch(() => setContacts([]));
     }
   }, [selectedFunction]);
 
-  // Fetch gallery count
+  // 🖼️ Fetch gallery count
   useEffect(() => {
     if (selectedFunction === "gallery" || selectedFunction === "dashboard") {
       axiosInstance
-        .get("/api/gallery")
+        .get("/gallery")
         .then((res) => setGalleryCount(Array.isArray(res.data) ? res.data.length : 0))
         .catch(() => setGalleryCount(0));
     }
   }, [selectedFunction]);
 
-  // Delete contact
+  // ❌ Delete contact
   const handleDelete = async (id) => {
     try {
-      await axiosInstance.delete(`/api/contact/${id}`);
+      await axiosInstance.delete(`/contact/${id}`);
       setContacts((prev) => prev.filter((c) => c.id !== id));
-      return true;
     } catch (error) {
       console.error("Delete failed:", error);
-      return false;
+      alert("❌ Failed to delete contact.");
     }
   };
 
-  // Logout
+  // 🚪 Logout
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.href = "/";
@@ -72,6 +71,7 @@ export default function AdminPage() {
         ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
       >
         <h2 className="text-2xl font-bold mb-6 text-[#957d49]">Admin Panel</h2>
+
         {["dashboard", "contacts", "gallery", "changePassword"].map((tab) => (
           <button
             key={tab}
@@ -91,6 +91,7 @@ export default function AdminPage() {
             {tab === "changePassword" && "Change Password"}
           </button>
         ))}
+
         <button
           className="mt-auto bg-red-500 text-white p-3 rounded-lg hover:bg-red-600 transition"
           onClick={handleLogout}
@@ -99,7 +100,7 @@ export default function AdminPage() {
         </button>
       </div>
 
-      {/* Toggle button (mobile only) */}
+      {/* Sidebar Toggle (Mobile) */}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
         className="lg:hidden fixed top-1/2 -translate-y-1/2 left-0 bg-[#957d49] text-white p-2 rounded-r-lg shadow-md z-50"
@@ -107,7 +108,7 @@ export default function AdminPage() {
         {sidebarOpen ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
       </button>
 
-      {/* Right Content */}
+      {/* Main Content */}
       <div className="flex-1 p-6 lg:p-10 overflow-auto">
         {selectedFunction === "dashboard" && (
           <Dashboard
@@ -119,11 +120,7 @@ export default function AdminPage() {
         )}
 
         {selectedFunction === "contacts" && (
-          <div className="space-y-6">
-
-            {/* Contact list */}
-            <ContactList contacts={contacts} handleDelete={handleDelete} />
-          </div>
+          <ContactList contacts={contacts} handleDelete={handleDelete} />
         )}
 
         {selectedFunction === "gallery" && <GalleryManager />}

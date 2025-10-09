@@ -1,43 +1,5 @@
-import { useState, useEffect } from "react";
-import axiosInstance from "../../axiosInstance";
-
-export default function ContactList() {
-  const [contacts, setContacts] = useState([]);
+export default function ContactList({ contacts, handleDelete }) {
   const [selectedContact, setSelectedContact] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  // Fetch contacts on mount
-  useEffect(() => {
-    fetchContacts();
-  }, []);
-
-  const fetchContacts = async () => {
-    try {
-      setLoading(true);
-      setError("");
-      const res = await axiosInstance.get("/api/contact");
-      setContacts(Array.isArray(res.data) ? res.data : []);
-    } catch (err) {
-      console.error("Error fetching contacts:", err);
-      setError("❌ Failed to load contacts (401 Unauthorized?)");
-      setContacts([]);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleDelete = async (id) => {
-    if (!window.confirm("⚠️ Are you sure you want to delete this message?")) return;
-
-    try {
-      await axiosInstance.delete(`/api/contact/${id}`);
-      setContacts((prev) => prev.filter((c) => c.id !== id));
-    } catch (err) {
-      console.error("Error deleting contact:", err);
-      alert("❌ Failed to delete message.");
-    }
-  };
 
   return (
     <div className="p-6 bg-[#e2dbcd] min-h-screen">
@@ -45,15 +7,7 @@ export default function ContactList() {
         📩 Contact Messages <span className="text-gray-600">({contacts.length})</span>
       </h2>
 
-      {error && (
-        <div className="mb-4 p-3 bg-red-100 text-red-700 border border-red-400 rounded">
-          {error}
-        </div>
-      )}
-
-      {loading ? (
-        <p className="text-center text-gray-600">Loading contacts...</p>
-      ) : contacts.length === 0 ? (
+      {contacts.length === 0 ? (
         <p className="text-center text-gray-600">No messages yet.</p>
       ) : (
         <ul className="space-y-4">
