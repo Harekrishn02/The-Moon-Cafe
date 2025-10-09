@@ -1,6 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
-import API_BASE from "../../config"; // ✅ import config
+import axiosInstance from "../../axiosInstance";
 
 export default function ChangePasswordForm() {
   const [oldPassword, setOldPassword] = useState("");
@@ -31,14 +30,9 @@ export default function ChangePasswordForm() {
 
       setLoading(true);
 
-      const res = await axios.post(
-        `${API_BASE}/api/change-password`, // ✅ now uses LAN API base
-        { oldPassword, newPassword },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+      const res = await axiosInstance.post(
+        `/change-password`,
+        { oldPassword, newPassword }
       );
 
       setMessage("✅ " + res.data.message);

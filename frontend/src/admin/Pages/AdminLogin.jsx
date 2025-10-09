@@ -1,7 +1,6 @@
 // AdminLogin.jsx
 import { useState } from "react";
-import axios from "axios";
-import API_BASE from "../../config"; // ✅ import API base
+import axiosInstance from "../../axiosInstance";
 
 export default function AdminLogin() {
   const [username, setUsername] = useState("");
@@ -11,7 +10,7 @@ export default function AdminLogin() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${API_BASE}/api/login`, {
+      const res = await axiosInstance.post(`/login`, {
         username,
         password,
       });

@@ -170,7 +170,7 @@ app.get("/api/gallery", (req, res) => {
   res.json(images);
 });
 
-app.post("/api/gallery", upload.array("images", 20), (req, res) => {
+app.post("/api/gallery", verifyToken, upload.array("images", 20), (req, res) => {
   let images = [];
   if (fs.existsSync(GALLERY_FILE)) {
     images = JSON.parse(fs.readFileSync(GALLERY_FILE, "utf8"));
@@ -187,7 +187,7 @@ app.post("/api/gallery", upload.array("images", 20), (req, res) => {
   res.status(201).json(newImgs);
 });
 
-app.delete("/api/gallery/:filename", (req, res) => {
+app.delete("/api/gallery/:filename", verifyToken, (req, res) => {
   if (!fs.existsSync(GALLERY_FILE)) {
     return res.status(404).json({ message: "No gallery found" });
   }

@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import axios from "axios";
-import API_BASE from "../../config";
+import axiosInstance from "../../axiosInstance";
 
 export default function GalleryManager() {
   const [images, setImages] = useState([]);
@@ -17,7 +16,7 @@ export default function GalleryManager() {
 
   const fetchImages = async () => {
     try {
-      const res = await axios.get(`${API_BASE}/api/gallery`);
+      const res = await axiosInstance.get(`/gallery`);
       setImages(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("Error fetching images:", err);
@@ -51,7 +50,7 @@ export default function GalleryManager() {
 
     try {
       setLoading(true);
-      const res = await axios.post(`${API_BASE}/api/gallery`, formData, {
+      const res = await axiosInstance.post(`/gallery`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setImages((prev) => [...prev, ...(Array.isArray(res.data) ? res.data : [])]);
@@ -70,7 +69,7 @@ export default function GalleryManager() {
 
     try {
       for (const filename of selected) {
-        await axios.delete(`${API_BASE}/api/gallery/${encodeURIComponent(filename)}`);
+        await axiosInstance.delete(`/gallery/${encodeURIComponent(filename)}`);
       }
       setImages((prev) => prev.filter((img) => !selected.includes(img.filename)));
       setSelected([]);
@@ -180,10 +179,10 @@ export default function GalleryManager() {
               }`}
             >
               <img
-                src={`${API_BASE.replace(/\/+$/, "")}/uploads/gallery/${img.filename}`}
+                src={`${axiosInstance.defaults.baseURL.replace(/\/+$/, "")}/uploads/gallery/${img.filename}`}
                 alt={img.filename}
                 className="w-full h-48 object-cover"
-                onClick={() => toggleSelect(img.filename)} // toggle on image click
+                onClick={() => toggleSelect(img.filename)}
               />
               <input
                 type="checkbox"
